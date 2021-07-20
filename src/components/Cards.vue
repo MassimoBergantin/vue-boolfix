@@ -6,19 +6,18 @@
         </div>
         <br>
         <div class="movie-details" v-if="hover" >
-            <h4>
-                {{ title }}
-            </h4>
+            <h5>{{ title }}</h5>
             <div class="original_launguage">
-                Language: {{ original_language }}
-                </div>  
-            <div class="vote">
-                Score: {{ vote_average}}
-            </div> 
+                Original Language: 
+                <flag v-if="original_language == 'en'" iso="us" />
+                <flag v-else :iso="original_language" />
+            </div>  
+            <div class="vote">Score: {{ vote_average}}</div> 
         </div>
     </div>
 </div>
 </template>
+
 
 
 <script>
@@ -33,7 +32,7 @@ export default {
     },
     computed:{
         generateImg(){
-            return 'https://image.tmdb.org/t/p/w342' + this.poster_path
+            return 'https://image.tmdb.org/t/p/w342' + this.poster_path 
         }
     },
     data(){
@@ -47,21 +46,22 @@ export default {
 
 <style lang="scss" scoped>
 .cards-container{
-    margin: 60px;
+    margin: 70px 20px;
     position: relative;
-    width: 320px;
+    max-width: 320px;
     .movie-details{
-        width: 200px;
         text-align: center;
         color:rgb(255, 255, 255);
         position: absolute;
         left: 100px;
-        background-color: rgba(0, 0, 0, 0.8);
-        box-shadow: 1px 1px 10px #aaa;
+        background-color: rgba(96, 97, 99, 0.658);
+        box-shadow: 1px 1px 50px #aaa;
         padding: 10px;
+        border-radius: 25px;
     }
-}
-.movie-poster img {
-    box-shadow: 1px 1px 50px #aaa;
+    .movie-poster:hover {
+
+        box-shadow: 1px 1px 500px rgb(255, 254, 254);
+    }
 }
 </style>

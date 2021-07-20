@@ -1,10 +1,9 @@
-
 <template>
 <div class="container-fluid">
     <div class="header-container row">
         <div class="logo-container col-6">
             <div class="logo-content">
-                <a href="main.vue"><img src="../assets/logo.png" alt="logo-Netflix"> </a>  
+               <img src="../assets/logo.png" alt="logo-Netflix">
             </div>
               <div class="nav col-12">
                     <ul>
@@ -21,6 +20,8 @@
        <div class="icon-container col ">
             <div class="icon-content">
                 <ul>
+                    <li><input type="text" placeholter="search" v-model="searchString" @keyup.enter="$emit('search', searchString)"></li>
+                    <li><i class="fas fa-search" @click="$emit('search', searchString)"></i></li>
                     <li>BAMBINI</li>
                     <li><i class="fas fa-bell"></i></li>
                 </ul>
@@ -49,10 +50,12 @@ export default {
         background-color: rgb(37, 37, 37);
         height: 80px;
         li{
+            font-size: 18px;
             list-style:none;
             display: inline-block;
-            margin-left:10px;
-            color:white;
+            padding-right:20px;
+            color: lightgrey;
+            cursor: pointer;
         }
     
         .logo-container{
@@ -65,10 +68,9 @@ export default {
             }
         }
         
-        .icon-container{
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
+        .icon-content{
+            float: right;
+            padding: 20px;
         }
      
     }

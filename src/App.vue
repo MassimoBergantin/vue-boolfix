@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header @search="searchFilm" />
-    <Main :cards="cards" />
+    <Header @search="searchMovies" />
+    <Main :cards="cards"/>
   </div>
 </template>
 
@@ -15,26 +15,27 @@ export default {
   components: {
     Header,
     Main,
+    
   },
   data(){
     return {
-      filteredFilm: [],
+      filteredMovies: [],
       cards: [],
     }
   },
   created() {
-    axios.get("https://api.themoviedb.org/3/movie/popular?api_key=4cabd8f1c186c089b648088ba73c6791").then((results) => {
+    axios.get("https://api.themoviedb.org/3/movie/popular?api_key=7d3154d492e3c72fd9ee0846bf2ce25c").then((results) => {
       this.cards = results.data.results;
-      this.filteredFilm = results.data.results
+      this.filteredMovies = results.data.results
     })
   },
   methods: {
     searchMovies (searchString){
       if (searchString.lenght == 0){
-        this.filteredFilm = this.cards
+        this.filteredMovies = this.cards
         return;
       }
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=4cabd8f1c186c089b648088ba73c6791&query=${searchString}`).then((results) => {
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=7d3154d492e3c72fd9ee0846bf2ce25c&query=${searchString}`).then((results) => {
       this.cards = results.data.results;
       })
     }

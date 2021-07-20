@@ -1,17 +1,15 @@
 <template>
   <div id="app">
-    <Header />
-    <Main :film="film"/>
+    <Header @search="searchFilm" />
+    <Main :cards="cards" />
   </div>
 </template>
 
+
 <script>
+import Header from "./components/Header.vue";
 import axios from "axios";
-import Header from './components/Header.vue';
-import Main from './components/Main.vue';
-
-
-
+import Main from "./components/Main.vue";
 export default {
   name: 'App',
   components: {
@@ -21,29 +19,30 @@ export default {
   data(){
     return {
       filteredFilm: [],
-      film: [],
+      cards: [],
     }
   },
   created() {
-    axios.get("https://api.themoviedb.org/3/movie/popular?api_key=7d3154d492e3c72fd9ee0846bf2ce25c").then((results) => {
-      this.film = results.data.results;
-      this.filteredMovies = results.data.results
+    axios.get("https://api.themoviedb.org/3/movie/popular?api_key=4cabd8f1c186c089b648088ba73c6791").then((results) => {
+      this.cards = results.data.results;
+      this.filteredFilm = results.data.results
     })
   },
   methods: {
-    searchFilm (searchString){
+    searchMovies (searchString){
       if (searchString.lenght == 0){
-        this.filteredMovies = this.film
+        this.filteredFilm = this.cards
         return;
       }
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=7d3154d492e3c72fd9ee0846bf2ce25c&query=${searchString}`).then((results) => {
-      this.film = results.data.results;
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=4cabd8f1c186c089b648088ba73c6791&query=${searchString}`).then((results) => {
+      this.cards = results.data.results;
       })
     }
   },
 }
 </script>
 
-<style lang="scss">
 
+
+<style lang="scss">
 </style>

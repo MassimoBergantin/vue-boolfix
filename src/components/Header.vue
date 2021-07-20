@@ -1,3 +1,4 @@
+
 <template>
 <div class="container-fluid">
     <div class="header-container row">
@@ -20,8 +21,6 @@
        <div class="icon-container col ">
             <div class="icon-content">
                 <ul>
-                    <li><input type="text" placeholter="search" v-model="searchString" @keyup.enter="$emit('search', searchString)"></li>
-                    <li><i class="fas fa-search" @click="$emit('search', searchString)"></i></li>
                     <li>BAMBINI</li>
                     <li><i class="fas fa-bell"></i></li>
                 </ul>
@@ -31,43 +30,45 @@
 </div>                
 </template>
 
+
 <script>
 export default {
-    name: 'Header'
+    name: 'Header',
+    data() {
+        return{
+            searchString: "",
+        }
+    },
 }
 </script>
+
 
 <style lang="scss" scoped>
     .header-container {
         color:white;
         background-color: rgb(37, 37, 37);
         height: 80px;
-        .logo-container{
-            display: flex;
-        }
         li{
-            font-size: larger;
             list-style:none;
             display: inline-block;
-            margin-right:15px;
-            color:lightgrey;
-            font-family: monospace;
-            padding: 25px;
-            cursor: pointer;
+            margin-left:10px;
+            color:white;
         }
-        li:hover {
-            color: white;
-        }
+    
         .logo-container{
             display: flex;
+            align-items: center;
         }
         .logo-content{
             img{
                 width: 150px;
             }
         }
-        .icon-content {
-            float: right;
+        
+        .icon-container{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
      
     }

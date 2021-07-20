@@ -1,12 +1,11 @@
-
 <template>
 <div class="container-fluid">
-    <div class="row header-container">
-        <div class="col-6 logo-container">
+    <div class="header-container row">
+        <div class="logo-container col-6">
             <div class="logo-content">
-                <img src="../assets/logo.png" alt="logo-Netflix">   
+                <a href="main.vue"><img src="../assets/logo.png" alt="logo-Netflix"> </a>  
             </div>
-              <div class="nav">
+              <div class="nav col-12">
                     <ul>
                         <li>Home</li>
                         <li>Serie Tv</li>
@@ -18,11 +17,11 @@
                 </div>
         </div>
 
-       <div class="col-6 icon-container">
+       <div class="icon-container col ">
             <div class="icon-content">
                 <ul>
                     <li><input type="text" placeholter="search" v-model="searchString" @keyup.enter="$emit('search', searchString)"></li>
-                    <li><i class="fas fa-search"></i></li>
+                    <li><i class="fas fa-search" @click="$emit('search', searchString)"></i></li>
                     <li>BAMBINI</li>
                     <li><i class="fas fa-bell"></i></li>
                 </ul>

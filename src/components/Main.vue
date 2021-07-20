@@ -1,17 +1,21 @@
 <template>
-    <div class="">
-        <div class="">
-            <Film
-            v-for="film in film" :key= "film.id"
-            :poster_path="film.poster_path"
-            :title="film.title"
-            :original_title="film.original_title"
-            :original_language="film.original_language"
-            :vote_average="film.vote_average"
-            />
+    
+    <div class="container-fluid">
+        <div class="row">
+            <h3>I più popolari</h3>
+            <Film class="cover col" 
+            v-for=" film in film" :key="film.id" 
+            :poster_path="film.poster_path" 
+            :title="film.title" 
+            :original_title="film.original_title" 
+            :original_language="film.original_language" 
+            :vote_average="film.vote_average" />
+                
         </div>
     </div>
+
 </template>
+
 
 <script>
 
@@ -29,11 +33,15 @@ export default {
 }
 </script>
 
+
 <style lang="scss">
-.container-fluid{
+.row{
+    height: 1000px;
+    overflow-y:scroll;
     background-color:rgb(77, 75, 75)
 }
-.cover:hover{
-    background-color: gray;
+h3{
+    padding-top:15px;
+    color:white;
 }
 </style>

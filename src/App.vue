@@ -28,6 +28,9 @@ export default {
       this.cards = results.data.results;
       this.filteredMovies = results.data.results
     })
+        axios.get("https://api.themoviedb.org/3/tv/popular?api_key=7d3154d492e3c72fd9ee0846bf2ce25c&language=en-US&page=1").then((results) => {
+      this.filteredMovies = results.data.results;
+    })
   },
   methods: {
     searchMovies (searchString){

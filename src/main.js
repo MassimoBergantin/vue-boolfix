@@ -6,6 +6,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import '@fortawesome/fontawesome-free/css/all.css'
+Vue.use(FlagIcon);
+import FlagIcon from '/node_modules/vue-flag-icon';
 
 library.add(faUserSecret)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
